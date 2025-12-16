@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sargazo Cabrera - Plan de Negocios Ambiental</title>
+    <title>SargaTech RD - Plan de Negocios | Biocombustible y Fertilizantes de Sargazo</title>
     <style>
         /* ========== RESET Y BASE ========== */
         * {
@@ -17,14 +17,16 @@
             --primary-dark: #065a5c;
             --secondary: #14a085;
             --accent: #e8b84a;
+            --gold: #d4a84b;
             --sand: #f5e6c8;
             --sand-light: #faf6ed;
             --ocean-dark: #0a4f5c;
-            --ocean: #127681;
             --text-dark: #1a1a2e;
             --text-light: #ffffff;
+            --success: #27ae60;
             --gradient-ocean: linear-gradient(135deg, #0d7377 0%, #14a085 50%, #0a4f5c 100%);
-            --gradient-sand: linear-gradient(180deg, #f5e6c8 0%, #e8dcc4 100%);
+            --gradient-gold: linear-gradient(135deg, #d4a84b 0%, #e8b84a 50%, #f0c05a 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
         }
 
         html {
@@ -45,7 +47,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(13, 115, 119, 0.95);
+            background: rgba(26, 26, 46, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 2rem;
             transition: all 0.3s ease;
@@ -53,7 +55,7 @@
 
         nav.scrolled {
             padding: 0.7rem 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .nav-container {
@@ -74,15 +76,8 @@
             gap: 0.5rem;
         }
 
-        .logo-icon {
-            width: 35px;
-            height: 35px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
+        .logo span {
+            color: var(--accent);
         }
 
         .nav-links {
@@ -96,22 +91,10 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
-            position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover {
+            color: var(--accent);
         }
 
         .menu-toggle {
@@ -138,7 +121,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background: var(--gradient-ocean);
+            background: var(--gradient-dark);
         }
 
         .hero::before {
@@ -149,78 +132,9 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(ellipse at 20% 80%, rgba(20, 160, 133, 0.4) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(13, 115, 119, 0.4) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 100%, rgba(139, 119, 42, 0.3) 0%, transparent 40%);
-        }
-
-        /* Ondas animadas */
-        .waves {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            overflow: hidden;
-        }
-
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C57.1,118.92,156.63,69.08,321.39,56.44Z' fill='%23f5e6c8'/%3E%3C/svg%3E");
-            background-size: 50% 100%;
-            animation: wave 10s linear infinite;
-        }
-
-        .wave:nth-child(2) {
-            bottom: 10px;
-            opacity: 0.5;
-            animation: wave 7s linear reverse infinite;
-        }
-
-        .wave:nth-child(3) {
-            bottom: 20px;
-            opacity: 0.3;
-            animation: wave 12s linear infinite;
-        }
-
-        @keyframes wave {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Partículas de sargazo */
-        .seaweed-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 20px;
-            height: 8px;
-            background: linear-gradient(90deg, #5a7c3e, #8fa86b);
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
-        .particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 1s; }
-        .particle:nth-child(3) { left: 45%; top: 35%; animation-delay: 2s; }
-        .particle:nth-child(4) { left: 65%; top: 70%; animation-delay: 3s; }
-        .particle:nth-child(5) { left: 85%; top: 25%; animation-delay: 4s; }
-        .particle:nth-child(6) { left: 15%; top: 80%; animation-delay: 1.5s; }
-        .particle:nth-child(7) { left: 75%; top: 45%; animation-delay: 2.5s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(10deg); }
+                radial-gradient(ellipse at 20% 80%, rgba(20, 160, 133, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(13, 115, 119, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(212, 168, 75, 0.1) 0%, transparent 40%);
         }
 
         .hero-content {
@@ -228,18 +142,18 @@
             color: var(--text-light);
             z-index: 10;
             padding: 2rem;
-            max-width: 900px;
+            max-width: 1000px;
         }
 
         .hero-badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--gradient-gold);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-size: 0.9rem;
+            font-weight: 600;
             margin-bottom: 1.5rem;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-dark);
             animation: fadeInDown 1s ease;
         }
 
@@ -252,72 +166,90 @@
         }
 
         .hero h1 span {
-            color: var(--accent);
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-subtitle {
             font-size: 1.4rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             opacity: 0.95;
             animation: fadeInUp 1s ease 0.4s both;
         }
 
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent);
+        .hero-tagline {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
             color: var(--text-dark);
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 168, 75, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 168, 75, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.6s both;
-            box-shadow: 0 4px 15px rgba(232, 184, 74, 0.4);
         }
 
-        .hero-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(232, 184, 74, 0.5);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 180px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator .mouse {
-            width: 30px;
-            height: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            padding-top: 10px;
-        }
-
-        .scroll-indicator .wheel {
-            width: 4px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 2px;
-            animation: scroll 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        @keyframes scroll {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(15px); opacity: 0; }
+        .btn-secondary:hover {
+            background: var(--text-light);
+            color: var(--text-dark);
         }
 
         @keyframes fadeInUp {
@@ -373,33 +305,20 @@
             margin: 0 auto;
         }
 
-        /* ========== SECCIÓN 1: EL PROBLEMA ========== */
-        .problema {
+        /* ========== SECCIÓN: OPORTUNIDAD DE MERCADO ========== */
+        .oportunidad {
             background: var(--sand-light);
-            position: relative;
-            overflow: hidden;
         }
 
-        .problema::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(180deg, var(--sand) 0%, transparent 100%);
-        }
-
-        .problema-grid {
+        .oportunidad-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
         }
 
-        .problema-card {
+        .oportunidad-card {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
@@ -407,7 +326,7 @@
             overflow: hidden;
         }
 
-        .problema-card::before {
+        .oportunidad-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -417,432 +336,127 @@
             background: var(--gradient-ocean);
         }
 
-        .problema-card:hover {
+        .oportunidad-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
         }
 
-        .problema-icon {
+        .oportunidad-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--gradient-ocean);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
-            position: relative;
+            font-size: 2rem;
         }
 
-        /* Iconos CSS */
-        .icon-environment::before {
-            content: '';
-            width: 30px;
-            height: 30px;
-            border: 3px solid white;
-            border-radius: 50%;
-            position: relative;
-        }
-
-        .icon-environment::after {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 20px;
-            background: white;
-            clip-path: polygon(50% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -40%);
-        }
-
-        .icon-tourism::before {
-            content: '';
-            width: 25px;
-            height: 25px;
-            border: 3px solid white;
-            border-radius: 3px;
-            position: relative;
-        }
-
-        .icon-tourism::after {
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-            top: 35%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .icon-government::before {
-            content: '';
-            width: 30px;
-            height: 20px;
-            background: white;
-            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-        }
-
-        .icon-government::after {
-            content: '';
-            position: absolute;
-            width: 35px;
-            height: 5px;
-            background: white;
-            bottom: 15px;
-            border-radius: 2px;
-        }
-
-        .problema-card h3 {
+        .oportunidad-card h3 {
             font-size: 1.3rem;
             color: var(--text-dark);
             margin-bottom: 1rem;
         }
 
-        .problema-card p {
+        .oportunidad-card p {
             color: #555;
             line-height: 1.7;
         }
 
-        .quote-box {
-            background: var(--gradient-ocean);
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-            color: var(--text-light);
-            position: relative;
-        }
-
-        .quote-box::before,
-        .quote-box::after {
-            content: '"';
-            font-size: 5rem;
-            position: absolute;
-            opacity: 0.2;
-            font-family: Georgia, serif;
-        }
-
-        .quote-box::before {
-            top: 10px;
-            left: 30px;
-        }
-
-        .quote-box::after {
-            bottom: -20px;
-            right: 30px;
-        }
-
-        .quote-text {
-            font-size: 1.5rem;
-            font-style: italic;
-            font-weight: 500;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Imagen ilustrativa sargazo */
-        .beach-illustration {
-            margin-top: 3rem;
-            background: linear-gradient(180deg, #87CEEB 0%, #87CEEB 40%, #f5e6c8 40%, #f5e6c8 60%, #5a7c3e 60%, #8fa86b 100%);
-            height: 200px;
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .beach-illustration::before {
-            content: '🏖️ Playa de Cabrera con acumulación de sargazo';
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-
-        /* ========== SECCIÓN 2: LA OPORTUNIDAD ========== */
-        .oportunidad {
-            background: white;
-            position: relative;
-        }
-
-        .oportunidad-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .oportunidad-visual {
-            position: relative;
-        }
-
-        .map-container {
-            background: var(--sand);
-            border-radius: 30px;
-            padding: 2rem;
-            position: relative;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .map-shape {
-            width: 200px;
-            height: 280px;
-            background: var(--primary);
-            border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
-            position: relative;
-            animation: morphShape 10s ease-in-out infinite;
-        }
-
-        @keyframes morphShape {
-            0%, 100% { border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%; }
-            50% { border-radius: 60% 40% 40% 60% / 40% 60% 40% 60%; }
-        }
-
-        .location-pin {
-            position: absolute;
-            top: 30%;
-            left: 55%;
-            width: 30px;
-            height: 40px;
-            animation: pinBounce 1s ease infinite;
-        }
-
-        .location-pin::before {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: var(--accent);
-            border-radius: 50% 50% 50% 0;
-            transform: rotate(-45deg);
-            box-shadow: 0 5px 15px rgba(232, 184, 74, 0.5);
-        }
-
-        .location-pin::after {
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-            top: 8px;
-            left: 10px;
-        }
-
-        @keyframes pinBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .location-label {
-            position: absolute;
-            top: 25%;
-            left: 70%;
-            background: white;
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            font-weight: 600;
+        .highlight-number {
+            font-size: 2rem;
+            font-weight: 800;
             color: var(--primary);
-            white-space: nowrap;
-        }
-
-        .productos-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .producto-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .producto-item:hover {
-            transform: scale(1.05);
-        }
-
-        .producto-emoji {
-            font-size: 2.5rem;
+            display: block;
             margin-bottom: 0.5rem;
         }
 
-        .producto-item span {
-            display: block;
-            font-weight: 600;
-            color: var(--text-dark);
+        /* ========== SECCIÓN: PRODUCTOS PRINCIPALES ========== */
+        .productos-principales {
+            background: var(--gradient-dark);
+            color: var(--text-light);
         }
 
-        .oportunidad-text h3 {
-            font-size: 2rem;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-        }
-
-        .oportunidad-text p {
-            color: #555;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .connection-box {
-            background: linear-gradient(135deg, var(--sand) 0%, #e8dcc4 100%);
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2rem 0;
-        }
-
-        .connection-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .connection-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .check-icon {
-            width: 30px;
-            height: 30px;
-            background: var(--secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .check-icon::before {
-            content: '';
-            width: 12px;
-            height: 6px;
-            border: 2px solid white;
-            border-top: none;
-            border-right: none;
-            transform: rotate(-45deg);
-            margin-bottom: 3px;
-        }
-
-        .quote-highlight {
+        .productos-principales .section-tag {
             background: var(--accent);
             color: var(--text-dark);
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            text-align: center;
-            margin-top: 2rem;
-            box-shadow: 0 10px 30px rgba(232, 184, 74, 0.3);
         }
 
-        /* ========== SECCIÓN 3: LA SOLUCIÓN ========== */
-        .solucion {
-            background: var(--gradient-ocean);
-            color: var(--text-light);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .solucion .section-tag {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .solucion .section-title {
+        .productos-principales .section-title {
             color: var(--text-light);
         }
 
-        .solucion .section-subtitle {
+        .productos-principales .section-subtitle {
             color: rgba(255, 255, 255, 0.8);
         }
 
-        .proceso-flow {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 4rem;
-        }
-
-        .proceso-step {
-            text-align: center;
-            max-width: 180px;
-        }
-
-        .proceso-circle {
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 3px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 2.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .proceso-step:hover .proceso-circle {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.1);
-        }
-
-        .proceso-arrow {
-            font-size: 2rem;
-            color: var(--accent);
-        }
-
-        .proceso-step h4 {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .clientes-impacto {
+        .productos-main-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 3rem;
         }
 
-        .clientes-box, .impacto-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .producto-main-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .clientes-box h3, .impacto-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+        .producto-main-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .producto-main-card.featured {
+            border-color: var(--accent);
+        }
+
+        .producto-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-gold);
+            color: var(--text-dark);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .producto-main-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-gold);
+            border-radius: 25px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 2rem;
         }
 
-        .clientes-list, .impacto-list {
+        .producto-main-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .producto-main-card > p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .producto-features {
             list-style: none;
         }
 
-        .clientes-list li, .impacto-list li {
+        .producto-features li {
             padding: 0.8rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
@@ -850,83 +464,155 @@
             gap: 1rem;
         }
 
-        .clientes-list li:last-child, .impacto-list li:last-child {
+        .producto-features li:last-child {
             border-bottom: none;
         }
 
-        .list-icon {
-            width: 35px;
-            height: 35px;
-            background: var(--accent);
-            border-radius: 10px;
+        .feature-check {
+            width: 25px;
+            height: 25px;
+            background: var(--success);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            flex-shrink: 0;
         }
 
-        .solucion-quote {
-            background: var(--accent);
-            color: var(--text-dark);
-            padding: 2rem 3rem;
+        .feature-check::before {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .mercado-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .mercado-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mercado-box p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ========== SECCIÓN: PRODUCTOS SECUNDARIOS ========== */
+        .productos-secundarios {
+            background: white;
+        }
+
+        .productos-sec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .producto-sec-card {
+            background: var(--sand-light);
+            padding: 2rem;
             border-radius: 20px;
             text-align: center;
-            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .producto-sec-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .producto-sec-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-ocean);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .producto-sec-card h3 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .producto-sec-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .producto-sec-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-top: 3rem;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            margin-top: 1rem;
         }
 
-        /* ========== SECCIÓN 4: PLAN DE NEGOCIO ========== */
-        .plan {
+        /* ========== SECCIÓN: PROCESO DE PRODUCCIÓN ========== */
+        .proceso {
             background: var(--sand-light);
-            position: relative;
         }
 
-        .timeline {
+        .proceso-timeline {
             position: relative;
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .timeline::before {
+        .proceso-timeline::before {
             content: '';
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
             width: 4px;
             height: 100%;
-            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background: var(--gradient-ocean);
             border-radius: 2px;
         }
 
-        .fase {
+        .proceso-step {
             display: flex;
             align-items: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             position: relative;
         }
 
-        .fase:nth-child(odd) {
+        .proceso-step:nth-child(odd) {
             flex-direction: row-reverse;
         }
 
-        .fase-content {
+        .proceso-step:nth-child(odd) .proceso-content {
+            text-align: right;
+            padding-right: 3rem;
+            padding-left: 0;
+        }
+
+        .proceso-step:nth-child(even) .proceso-content {
+            padding-left: 3rem;
+        }
+
+        .proceso-content {
             width: 45%;
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            position: relative;
-            transition: all 0.3s ease;
         }
 
-        .fase-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
-        }
-
-        .fase-number {
+        .proceso-number {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -944,33 +630,215 @@
             z-index: 10;
         }
 
-        .fase:nth-child(2) .fase-number {
-            background: var(--secondary);
+        .proceso-content h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
         }
 
-        .fase:nth-child(3) .fase-number {
+        .proceso-content p {
+            color: #555;
+        }
+
+        /* ========== SECCIÓN: VIABILIDAD ECONÓMICA ========== */
+        .viabilidad {
+            background: var(--gradient-ocean);
+            color: var(--text-light);
+        }
+
+        .viabilidad .section-tag {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .viabilidad .section-title {
+            color: var(--text-light);
+        }
+
+        .viabilidad .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .viabilidad-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .viabilidad-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .viabilidad-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .viabilidad-list {
+            list-style: none;
+        }
+
+        .viabilidad-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .viabilidad-list li:last-child {
+            border-bottom: none;
+        }
+
+        .viabilidad-value {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .roi-box {
+            background: var(--accent);
+            color: var(--text-dark);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .roi-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .roi-number {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .roi-box p {
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* ========== SECCIÓN: MODELO DE NEGOCIO ========== */
+        .modelo {
+            background: white;
+        }
+
+        .modelo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .modelo-card {
+            background: var(--sand-light);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .modelo-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .modelo-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-ocean);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .modelo-card h3 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .modelo-card p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* ========== SECCIÓN: PLAN DE INVERSIÓN ========== */
+        .inversion {
+            background: var(--gradient-dark);
+            color: var(--text-light);
+        }
+
+        .inversion .section-tag {
             background: var(--accent);
             color: var(--text-dark);
         }
 
+        .inversion .section-title {
+            color: var(--text-light);
+        }
+
+        .inversion .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .fases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .fase-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fase-card.featured {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
         .fase-header {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .fase-tag {
             display: inline-block;
-            background: var(--sand);
+            background: var(--primary);
             padding: 0.3rem 1rem;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .fase-card.featured .fase-tag {
+            background: var(--accent);
+            color: var(--text-dark);
         }
 
         .fase-header h3 {
             font-size: 1.4rem;
-            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .fase-inversion {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
         }
 
         .fase-list {
@@ -978,50 +846,168 @@
         }
 
         .fase-list li {
-            padding: 0.6rem 0;
+            padding: 0.7rem 0;
             display: flex;
             align-items: flex-start;
             gap: 0.8rem;
-            color: #555;
+            opacity: 0.9;
         }
 
         .fase-bullet {
             width: 8px;
             height: 8px;
-            background: var(--secondary);
+            background: var(--accent);
             border-radius: 50%;
             margin-top: 8px;
             flex-shrink: 0;
         }
 
-        /* ========== SECCIÓN FINAL: CONCLUSIÓN ========== */
-        .conclusion {
+        .fase-meta {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .fase-meta span {
+            display: block;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .fase-meta strong {
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        /* ========== SECCIÓN: CLIENTES OBJETIVO ========== */
+        .clientes {
+            background: var(--sand-light);
+        }
+
+        .clientes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .cliente-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .cliente-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .cliente-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-ocean);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cliente-card h3 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .cliente-card p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .cliente-productos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .cliente-productos span {
+            background: var(--sand);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* ========== SECCIÓN: VENTAJAS COMPETITIVAS ========== */
+        .ventajas {
+            background: white;
+        }
+
+        .ventajas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .ventaja-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--sand-light);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .ventaja-item:hover {
+            background: white;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .ventaja-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-ocean);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .ventaja-content h3 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .ventaja-content p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* ========== SECCIÓN FINAL: CTA ========== */
+        .cta-final {
             background: var(--gradient-ocean);
             color: var(--text-light);
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            padding: 5rem 2rem;
         }
 
-        .conclusion::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35C57.1,53.22,156.63,67.72,321.39,56.44Z' fill='%23faf6ed'/%3E%3C/svg%3E");
-            background-size: cover;
-            transform: rotate(180deg);
-        }
-
-        .conclusion-content {
+        .cta-content {
             max-width: 800px;
             margin: 0 auto;
-            padding-top: 4rem;
         }
 
-        .conclusion-icon {
+        .cta-icon {
             width: 100px;
             height: 100px;
             background: var(--accent);
@@ -1034,102 +1020,95 @@
             box-shadow: 0 10px 40px rgba(232, 184, 74, 0.4);
         }
 
-        .conclusion h2 {
+        .cta-final h2 {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .conclusion p {
-            font-size: 1.3rem;
+        .cta-final p {
+            font-size: 1.2rem;
             opacity: 0.95;
-            line-height: 1.8;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
-        .pillars {
+        .cta-buttons {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-
-        .pillar {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
             gap: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .pillar:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .pillar-icon {
-            font-size: 2rem;
-        }
-
-        .pillar span {
-            font-weight: 600;
-            font-size: 1.1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* ========== FOOTER ========== */
         footer {
-            background: var(--ocean-dark);
+            background: var(--text-dark);
             color: var(--text-light);
             padding: 3rem 2rem;
-            text-align: center;
         }
 
         .footer-content {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
         }
 
-        .footer-logo {
+        .footer-brand h3 {
             font-size: 1.5rem;
-            font-weight: 700;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
         }
 
-        footer p {
+        .footer-brand h3 span {
+            color: var(--accent);
+        }
+
+        .footer-brand p {
             opacity: 0.8;
             margin-bottom: 1.5rem;
         }
 
-        .footer-location {
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 0.5rem 0;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-size: 0.95rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .footer-divider {
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            margin: 1.5rem auto;
-            border-radius: 2px;
-        }
-
-        .copyright {
-            font-size: 0.85rem;
+        .footer-bottom p {
             opacity: 0.6;
+            font-size: 0.9rem;
         }
 
-        /* ========== ANIMACIONES DE SCROLL ========== */
+        /* ========== ANIMACIONES ========== */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
@@ -1143,34 +1122,42 @@
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 992px) {
-            .oportunidad-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .oportunidad-visual {
-                order: -1;
-            }
-
-            .clientes-impacto {
+            .productos-main-grid,
+            .fases-grid {
                 grid-template-columns: 1fr;
             }
 
-            .timeline::before {
+            .ventajas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modelo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .proceso-timeline::before {
                 left: 30px;
             }
 
-            .fase {
+            .proceso-step {
                 flex-direction: column !important;
                 align-items: flex-start;
                 padding-left: 80px;
             }
 
-            .fase-content {
+            .proceso-content {
                 width: 100%;
+                text-align: left !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
             }
 
-            .fase-number {
+            .proceso-number {
                 left: 30px;
                 transform: translateX(-50%);
             }
@@ -1183,7 +1170,7 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--primary-dark);
+                background: var(--text-dark);
                 flex-direction: column;
                 padding: 1rem;
                 gap: 0;
@@ -1210,35 +1197,23 @@
                 font-size: 1.1rem;
             }
 
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
             .section-title {
                 font-size: 1.8rem;
             }
 
-            .proceso-flow {
-                flex-direction: column;
-            }
-
-            .proceso-arrow {
-                transform: rotate(90deg);
-            }
-
-            .productos-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .quote-text {
-                font-size: 1.2rem;
-            }
-
-            .pillars {
+            .hero-cta-group {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .pillar {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
@@ -1251,15 +1226,7 @@
                 font-size: 1.8rem;
             }
 
-            .problema-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .productos-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .conclusion h2 {
+            .cta-final h2 {
                 font-size: 1.8rem;
             }
         }
@@ -1270,15 +1237,14 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <div class="logo-icon">🌊</div>
-                Sargazo Cabrera
+                Sarga<span>Tech</span> RD
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#problema">El Problema</a></li>
                 <li><a href="#oportunidad">Oportunidad</a></li>
-                <li><a href="#solucion">Solución</a></li>
-                <li><a href="#plan">Plan</a></li>
-                <li><a href="#conclusion">Conclusión</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#viabilidad">Viabilidad</a></li>
+                <li><a href="#inversion">Inversión</a></li>
+                <li><a href="#clientes">Mercado</a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
                 <span></span>
@@ -1290,336 +1256,633 @@
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="seaweed-particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        
         <div class="hero-content">
-            <div class="hero-badge">🌱 Plan de Negocios Ambiental</div>
-            <h1>Transformando el <span>Sargazo</span> en Oportunidad</h1>
-            <p class="hero-subtitle">Un proyecto sostenible para las playas de Cabrera, María Trinidad Sánchez, República Dominicana</p>
-            <a href="#problema" class="hero-cta">
-                Descubre el Proyecto
-                <span>↓</span>
-            </a>
-        </div>
-
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
+            <div class="hero-badge">📊 Plan de Negocios 2024</div>
+            <h1>Transformamos <span>Sargazo</span> en <span>Energía</span> y <span>Fertilizantes</span></h1>
+            <p class="hero-subtitle">Producción industrial de biocombustible y abono orgánico a partir del sargazo en Cabrera, República Dominicana</p>
+            <p class="hero-tagline">Una oportunidad de negocio rentable con materia prima abundante y gratuita</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">20M+</span>
+                    <span class="stat-label">Toneladas de sargazo/año en el Caribe</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$500M</span>
+                    <span class="stat-label">Mercado potencial regional</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">180%</span>
+                    <span class="stat-label">ROI proyectado año 3</span>
+                </div>
             </div>
-        </div>
 
-        <div class="waves">
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
+            <div class="hero-cta-group">
+                <a href="#productos" class="btn-primary">Ver Productos</a>
+                <a href="#inversion" class="btn-secondary">Plan de Inversión</a>
+            </div>
         </div>
     </section>
 
-    <!-- Sección 1: El Problema -->
-    <section class="problema" id="problema">
-        <div class="section-container">
-            <div class="section-header reveal">
-                <span class="section-tag">Sección 1</span>
-                <h2 class="section-title">El sargazo: un problema ambiental y económico en Cabrera</h2>
-                <p class="section-subtitle">Las playas de nuestra región enfrentan un desafío que afecta tanto al ecosistema como a nuestra economía local</p>
-            </div>
-
-            <div class="problema-grid">
-                <div class="problema-card reveal">
-                    <div class="problema-icon icon-environment"></div>
-                    <h3>Impacto Ambiental</h3>
-                    <p>La gran cantidad de sargazo acumulado ha afectado significativamente el medioambiente costero, alterando el ecosistema marino y la calidad de nuestras playas.</p>
-                </div>
-
-                <div class="problema-card reveal">
-                    <div class="problema-icon icon-tourism"></div>
-                    <h3>Impacto en el Turismo</h3>
-                    <p>El turismo, una fuente clave de ingresos para nuestra comunidad, se ha visto negativamente afectado por la presencia masiva de sargazo en las costas.</p>
-                </div>
-
-                <div class="problema-card reveal">
-                    <div class="problema-icon icon-government"></div>
-                    <h3>Falta de Soluciones Efectivas</h3>
-                    <p>El sector público no ha logrado implementar una solución efectiva y eficiente para recolectar y procesar el sargazo de manera sostenible.</p>
-                </div>
-            </div>
-
-            <div class="quote-box reveal">
-                <p class="quote-text">El sargazo se acumula en nuestras playas mientras la comunidad espera una solución.</p>
-            </div>
-
-            <div class="beach-illustration reveal"></div>
-        </div>
-    </section>
-
-    <!-- Sección 2: La Oportunidad -->
+    <!-- Sección: Oportunidad de Mercado -->
     <section class="oportunidad" id="oportunidad">
         <div class="section-container">
             <div class="section-header reveal">
-                <span class="section-tag">Sección 2</span>
-                <h2 class="section-title">Cabrera: una oportunidad para transformar el problema</h2>
-                <p class="section-subtitle">Nuestra comunidad tiene todo lo necesario para convertir un desafío en una solución innovadora</p>
+                <span class="section-tag">Oportunidad de Mercado</span>
+                <h2 class="section-title">El Sargazo: De Problema a Materia Prima Rentable</h2>
+                <p class="section-subtitle">Una fuente de recursos abundante y renovable que nadie está aprovechando industrialmente en la región</p>
             </div>
 
-            <div class="oportunidad-content">
-                <div class="oportunidad-visual reveal">
-                    <div class="map-container">
-                        <div class="map-shape">
-                            <div class="location-pin"></div>
-                        </div>
-                        <div class="location-label">📍 Cabrera, RD</div>
-                    </div>
-                    <div class="productos-grid">
-                        <div class="producto-item">
-                            <div class="producto-emoji">🥥</div>
-                            <span>Coco</span>
-                        </div>
-                        <div class="producto-item">
-                            <div class="producto-emoji">🌾</div>
-                            <span>Arroz</span>
-                        </div>
-                        <div class="producto-item">
-                            <div class="producto-emoji">🍌</div>
-                            <span>Plátano</span>
-                        </div>
-                    </div>
+            <div class="oportunidad-grid">
+                <div class="oportunidad-card reveal">
+                    <div class="oportunidad-icon">📈</div>
+                    <h3>Materia Prima Abundante</h3>
+                    <span class="highlight-number">+2,000 ton/año</span>
+                    <p>Solo en las costas de Cabrera se acumulan miles de toneladas de sargazo anualmente, representando materia prima a costo cero para nuestra operación.</p>
                 </div>
 
-                <div class="oportunidad-text reveal">
-                    <h3>Contexto Local</h3>
-                    <p>Cabrera cuenta con una economía agrícola activa, donde familias trabajan la tierra en huertos y pequeños conucos, produciendo cultivos esenciales para la región.</p>
+                <div class="oportunidad-card reveal">
+                    <div class="oportunidad-icon">⛽</div>
+                    <h3>Demanda de Combustibles</h3>
+                    <span class="highlight-number">RD$180B/año</span>
+                    <p>República Dominicana importa la totalidad de sus combustibles. Los biocombustibles representan una alternativa local con demanda garantizada.</p>
+                </div>
+
+                <div class="oportunidad-card reveal">
+                    <div class="oportunidad-icon">🌱</div>
+                    <h3>Mercado de Fertilizantes</h3>
+                    <span class="highlight-number">US$45M/año</span>
+                    <p>El sector agrícola dominicano invierte millones en fertilizantes importados. Un producto local orgánico tiene ventaja competitiva clara.</p>
+                </div>
+
+                <div class="oportunidad-card reveal">
+                    <div class="oportunidad-icon">🏭</div>
+                    <h3>Sin Competencia Directa</h3>
+                    <span class="highlight-number">0 empresas</span>
+                    <p>Actualmente no existe ninguna empresa en RD que procese sargazo industrialmente. Somos los primeros en el mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Productos Principales -->
+    <section class="productos-principales" id="productos">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Productos Principales</span>
+                <h2 class="section-title">Líneas de Producción de Alto Valor</h2>
+                <p class="section-subtitle">Dos productos con demanda comprobada y márgenes de rentabilidad superiores al 40%</p>
+            </div>
+
+            <div class="productos-main-grid">
+                <div class="producto-main-card featured reveal">
+                    <span class="producto-badge">⭐ Producto Estrella</span>
+                    <div class="producto-main-icon">⛽</div>
+                    <h3>Biocombustible de Sargazo</h3>
+                    <p>Producción de bioetanol y biodiésel mediante procesos de fermentación y conversión termoquímica del sargazo. Combustible limpio y renovable.</p>
                     
-                    <div class="connection-box">
-                        <div class="connection-item">
-                            <div class="check-icon"></div>
-                            <span>El sargazo abunda en la costa</span>
-                        </div>
-                        <div class="connection-item">
-                            <div class="check-icon"></div>
-                            <span>Los agricultores necesitan mejorar la fertilidad del suelo</span>
-                        </div>
-                        <div class="connection-item">
-                            <div class="check-icon"></div>
-                            <span>Existe una necesidad de reducir costos en insumos agrícolas</span>
-                        </div>
+                    <ul class="producto-features">
+                        <li>
+                            <span class="feature-check"></span>
+                            Bioetanol para mezcla con gasolina (E10, E15)
+                        </li>
+                        <li>
+                            <span class="feature-check"></span>
+                            Biodiésel para transporte y generación eléctrica
+                        </li>
+                        <li>
+                            <span class="feature-check"></span>
+                            Biogás para uso industrial
+                        </li>
+                        <li>
+                            <span class="feature-check"></span>
+                            Reducción de 60% en emisiones de CO2
+                        </li>
+                    </ul>
+
+                    <div class="mercado-box">
+                        <h4>Mercado Objetivo</h4>
+                        <p>Distribuidoras de combustibles, plantas de generación eléctrica, flotas de transporte empresarial, sector industrial.</p>
                     </div>
+                </div>
 
-                    <p>Existe una conexión directa entre el problema costero y la necesidad agrícola de nuestra comunidad.</p>
+                <div class="producto-main-card featured reveal">
+                    <span class="producto-badge">💰 Alta Demanda</span>
+                    <div class="producto-main-icon">🌿</div>
+                    <h3>Fertilizante Orgánico Premium</h3>
+                    <p>Compost enriquecido y fertilizante líquido procesado a partir de sargazo tratado. Alto contenido de nutrientes esenciales para cultivos.</p>
+                    
+                    <ul class="producto-features">
+                        <li>
+                            <span class="feature-check"></span>
+                            Compost sólido granulado (sacos 25kg, 50kg)
+                        </li>
+                        <li>
+                            <span class="feature-check"></span>
+                            Fertilizante líquido concentrado
+                        </li>
+                        <li>
+                            <span class="feature-check"></span>
+                            Rico en potasio, nitrógeno y micronutrientes
+                        </li>
+                        <li>
+                            <span class="feature-check"></span>
+                            Certificación orgánica (en proceso)
+                        </li>
+                    </ul>
 
-                    <div class="quote-highlight">
-                        "Lo que sobra en la playa hace falta en el campo."
+                    <div class="mercado-box">
+                        <h4>Mercado Objetivo</h4>
+                        <p>Productores agrícolas de coco, arroz, plátano, vegetales, viveros comerciales, empresas de jardinería y paisajismo.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección 3: La Solución -->
-    <section class="solucion" id="solucion">
+    <!-- Sección: Productos Secundarios -->
+    <section class="productos-secundarios">
         <div class="section-container">
             <div class="section-header reveal">
-                <span class="section-tag">Sección 3</span>
-                <h2 class="section-title">De la playa al campo: compost con sargazo</h2>
-                <p class="section-subtitle">Un proceso innovador que transforma el problema en una solución sostenible</p>
+                <span class="section-tag">Líneas Secundarias</span>
+                <h2 class="section-title">Diversificación de Productos</h2>
+                <p class="section-subtitle">Productos adicionales que maximizan el aprovechamiento del sargazo y aumentan los ingresos</p>
             </div>
 
-            <div class="proceso-flow reveal">
-                <div class="proceso-step">
-                    <div class="proceso-circle">🌊</div>
-                    <h4>Recolección comunitaria</h4>
+            <div class="productos-sec-grid">
+                <div class="producto-sec-card reveal">
+                    <div class="producto-sec-icon">🧴</div>
+                    <h3>Cosméticos Naturales</h3>
+                    <p>Extractos de algas para cremas hidratantes, mascarillas faciales y productos anti-edad.</p>
+                    <span class="producto-sec-tag">Fase 2</span>
                 </div>
-                <span class="proceso-arrow">→</span>
-                <div class="proceso-step">
-                    <div class="proceso-circle">💧</div>
-                    <h4>Lavado y tratamiento</h4>
+
+                <div class="producto-sec-card reveal">
+                    <div class="producto-sec-icon">🥤</div>
+                    <h3>Plástico Biodegradable</h3>
+                    <p>Bioplásticos para empaques, envases y productos desechables 100% compostables.</p>
+                    <span class="producto-sec-tag">Fase 3</span>
                 </div>
-                <span class="proceso-arrow">→</span>
-                <div class="proceso-step">
-                    <div class="proceso-circle">♻️</div>
-                    <h4>Compostaje</h4>
+
+                <div class="producto-sec-card reveal">
+                    <div class="producto-sec-icon">🧱</div>
+                    <h3>Material de Construcción</h3>
+                    <p>Paneles aislantes y bloques ecológicos con fibra de sargazo prensada.</p>
+                    <span class="producto-sec-tag">Fase 3</span>
                 </div>
-                <span class="proceso-arrow">→</span>
-                <div class="proceso-step">
-                    <div class="proceso-circle">🌱</div>
-                    <h4>Abono orgánico</h4>
+
+                <div class="producto-sec-card reveal">
+                    <div class="producto-sec-icon">🐄</div>
+                    <h3>Alimento Animal</h3>
+                    <p>Suplemento nutritivo para ganado y acuicultura, rico en proteínas y minerales.</p>
+                    <span class="producto-sec-tag">Fase 2</span>
+                </div>
+
+                <div class="producto-sec-card reveal">
+                    <div class="producto-sec-icon">💊</div>
+                    <h3>Extractos Farmacéuticos</h3>
+                    <p>Compuestos bioactivos con propiedades antioxidantes y antiinflamatorias.</p>
+                    <span class="producto-sec-tag">Fase 3</span>
+                </div>
+
+                <div class="producto-sec-card reveal">
+                    <div class="producto-sec-icon">📦</div>
+                    <h3>Papel y Cartón</h3>
+                    <p>Papel ecológico y empaques sustentables a partir de fibra de sargazo.</p>
+                    <span class="producto-sec-tag">Fase 2</span>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="clientes-impacto">
-                <div class="clientes-box reveal">
-                    <h3>👥 Nuestros Clientes</h3>
-                    <ul class="clientes-list">
+    <!-- Sección: Proceso de Producción -->
+    <section class="proceso">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Proceso Industrial</span>
+                <h2 class="section-title">Cadena de Producción</h2>
+                <p class="section-subtitle">Proceso optimizado desde la recolección hasta el producto final</p>
+            </div>
+
+            <div class="proceso-timeline">
+                <div class="proceso-step reveal">
+                    <div class="proceso-number">1</div>
+                    <div class="proceso-content">
+                        <h3>Recolección Mecanizada</h3>
+                        <p>Maquinaria especializada para recolección eficiente en playas. Capacidad de 50+ toneladas diarias.</p>
+                    </div>
+                </div>
+
+                <div class="proceso-step reveal">
+                    <div class="proceso-number">2</div>
+                    <div class="proceso-content">
+                        <h3>Lavado y Desalinización</h3>
+                        <p>Sistema de lavado industrial que elimina sal, arena e impurezas del sargazo.</p>
+                    </div>
+                </div>
+
+                <div class="proceso-step reveal">
+                    <div class="proceso-number">3</div>
+                    <div class="proceso-content">
+                        <h3>Secado y Triturado</h3>
+                        <p>Proceso de deshidratación controlada y reducción de tamaño para procesamiento.</p>
+                    </div>
+                </div>
+
+                <div class="proceso-step reveal">
+                    <div class="proceso-number">4</div>
+                    <div class="proceso-content">
+                        <h3>Procesamiento Diferenciado</h3>
+                        <p>Línea de biocombustibles (fermentación) y línea de fertilizantes (compostaje industrial).</p>
+                    </div>
+                </div>
+
+                <div class="proceso-step reveal">
+                    <div class="proceso-number">5</div>
+                    <div class="proceso-content">
+                        <h3>Empaque y Distribución</h3>
+                        <p>Productos terminados empacados según estándares comerciales. Red de distribución nacional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Viabilidad Económica -->
+    <section class="viabilidad" id="viabilidad">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Viabilidad Económica</span>
+                <h2 class="section-title">Proyecciones Financieras</h2>
+                <p class="section-subtitle">Números que demuestran la rentabilidad del proyecto</p>
+            </div>
+
+            <div class="viabilidad-grid">
+                <div class="viabilidad-card reveal">
+                    <h3>💰 Costos de Producción</h3>
+                    <ul class="viabilidad-list">
                         <li>
-                            <span class="list-icon">🥥</span>
-                            Productores de coco, arroz y plátano
+                            <span>Materia prima (sargazo)</span>
+                            <span class="viabilidad-value">$0</span>
                         </li>
                         <li>
-                            <span class="list-icon">🏡</span>
-                            Personas con huertos familiares
+                            <span>Recolección/tonelada</span>
+                            <span class="viabilidad-value">$15</span>
                         </li>
                         <li>
-                            <span class="list-icon">🌳</span>
-                            Viveros y proyectos de reforestación
+                            <span>Procesamiento/tonelada</span>
+                            <span class="viabilidad-value">$45</span>
+                        </li>
+                        <li>
+                            <span>Costo total/tonelada</span>
+                            <span class="viabilidad-value">$60</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="impacto-box reveal">
-                    <h3>✨ Impacto Esperado</h3>
-                    <ul class="impacto-list">
+                <div class="viabilidad-card reveal">
+                    <h3>📊 Precios de Venta</h3>
+                    <ul class="viabilidad-list">
                         <li>
-                            <span class="list-icon">🏖️</span>
-                            Playas más limpias
+                            <span>Biocombustible/galón</span>
+                            <span class="viabilidad-value">$3.50</span>
                         </li>
                         <li>
-                            <span class="list-icon">🌾</span>
-                            Suelos más fértiles
+                            <span>Compost/saco 50kg</span>
+                            <span class="viabilidad-value">$25</span>
                         </li>
                         <li>
-                            <span class="list-icon">🚫</span>
-                            Menos uso de fertilizantes químicos
+                            <span>Fertilizante líquido/litro</span>
+                            <span class="viabilidad-value">$8</span>
                         </li>
                         <li>
-                            <span class="list-icon">💼</span>
-                            Generación de empleos locales
+                            <span>Margen bruto promedio</span>
+                            <span class="viabilidad-value">45%</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="viabilidad-card reveal">
+                    <h3>📈 Proyección de Ingresos</h3>
+                    <ul class="viabilidad-list">
+                        <li>
+                            <span>Año 1</span>
+                            <span class="viabilidad-value">$180,000</span>
+                        </li>
+                        <li>
+                            <span>Año 2</span>
+                            <span class="viabilidad-value">$450,000</span>
+                        </li>
+                        <li>
+                            <span>Año 3</span>
+                            <span class="viabilidad-value">$850,000</span>
+                        </li>
+                        <li>
+                            <span>Año 5</span>
+                            <span class="viabilidad-value">$2.5M</span>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="solucion-quote reveal">
-                "Cabrera puede convertir un problema ambiental en una solución agrícola local."
+            <div class="roi-box reveal">
+                <h3>Retorno de Inversión Proyectado</h3>
+                <span class="roi-number">180%</span>
+                <p>ROI acumulado al tercer año de operación</p>
             </div>
         </div>
     </section>
 
-    <!-- Sección 4: Plan de Negocio -->
-    <section class="plan" id="plan">
+    <!-- Sección: Modelo de Negocio -->
+    <section class="modelo">
         <div class="section-container">
             <div class="section-header reveal">
-                <span class="section-tag">Sección 4</span>
-                <h2 class="section-title">Plan de Negocio por Fases</h2>
-                <p class="section-subtitle">Un camino estructurado hacia el crecimiento sostenible</p>
+                <span class="section-tag">Modelo de Negocio</span>
+                <h2 class="section-title">Estructura Comercial</h2>
+                <p class="section-subtitle">Múltiples fuentes de ingreso para maximizar la rentabilidad</p>
             </div>
 
-            <div class="timeline">
-                <div class="fase reveal">
-                    <div class="fase-number">1</div>
-                    <div class="fase-content">
-                        <div class="fase-header">
-                            <span class="fase-tag">Corto plazo</span>
-                            <h3>Fase de Inicio</h3>
-                        </div>
-                        <ul class="fase-list">
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Recolección manual del sargazo
-                            </li>
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Trabajo comunitario colaborativo
-                            </li>
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Producción pequeña de compost
-                            </li>
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Venta local directa
-                            </li>
-                        </ul>
+            <div class="modelo-grid">
+                <div class="modelo-card reveal">
+                    <div class="modelo-icon">🏭</div>
+                    <h3>Venta Directa Industrial</h3>
+                    <p>Contratos de suministro con distribuidoras de combustible, plantas eléctricas y empresas agrícolas.</p>
+                </div>
+
+                <div class="modelo-card reveal">
+                    <div class="modelo-icon">🏪</div>
+                    <h3>Distribución Comercial</h3>
+                    <p>Red de distribuidores para fertilizantes en ferreterías agrícolas, agrotiendas y cooperativas.</p>
+                </div>
+
+                <div class="modelo-card reveal">
+                    <div class="modelo-icon">🤝</div>
+                    <h3>Alianzas Estratégicas</h3>
+                    <p>Acuerdos con hoteles y municipios para recolección de sargazo. Ingresos adicionales por servicio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Plan de Inversión -->
+    <section class="inversion" id="inversion">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Plan de Inversión</span>
+                <h2 class="section-title">Fases de Crecimiento</h2>
+                <p class="section-subtitle">Desarrollo escalable con inversión progresiva y riesgo controlado</p>
+            </div>
+
+            <div class="fases-grid">
+                <div class="fase-card reveal">
+                    <div class="fase-header">
+                        <span class="fase-tag">Año 1</span>
+                        <h3>Fase Piloto</h3>
+                        <span class="fase-inversion">$150,000</span>
+                    </div>
+                    <ul class="fase-list">
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Planta piloto de procesamiento
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Equipo de recolección básico
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Producción de compost (principal)
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Pruebas de biocombustible
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Validación de mercado local
+                        </li>
+                    </ul>
+                    <div class="fase-meta">
+                        <span>Producción mensual</span>
+                        <strong>100 toneladas</strong>
                     </div>
                 </div>
 
-                <div class="fase reveal">
-                    <div class="fase-number">2</div>
-                    <div class="fase-content">
-                        <div class="fase-header">
-                            <span class="fase-tag">Mediano plazo</span>
-                            <h3>Fase de Crecimiento</h3>
-                        </div>
-                        <ul class="fase-list">
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Mejora del proceso de compostaje
-                            </li>
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Alianzas estratégicas con agricultores
-                            </li>
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Creación de marca local del producto
-                            </li>
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Diseño de empaques simples
-                            </li>
-                        </ul>
+                <div class="fase-card featured reveal">
+                    <div class="fase-header">
+                        <span class="fase-tag">Años 2-3</span>
+                        <h3>Fase de Expansión</h3>
+                        <span class="fase-inversion">$500,000</span>
+                    </div>
+                    <ul class="fase-list">
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Planta industrial completa
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Línea de biocombustible operativa
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Flota de recolección mecanizada
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Red de distribución nacional
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Certificaciones de calidad
+                        </li>
+                    </ul>
+                    <div class="fase-meta">
+                        <span>Producción mensual</span>
+                        <strong>500 toneladas</strong>
                     </div>
                 </div>
 
-                <div class="fase reveal">
-                    <div class="fase-number">3</div>
-                    <div class="fase-content">
-                        <div class="fase-header">
-                            <span class="fase-tag">Largo plazo</span>
-                            <h3>Fase Avanzada</h3>
-                        </div>
-                        <ul class="fase-list">
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Producción a mayor escala
-                            </li>
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Distribución regional expandida
-                            </li>
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Certificación orgánica oficial
-                            </li>
-                            <li>
-                                <span class="fase-bullet"></span>
-                                Venta a proyectos agrícolas y ambientales
-                            </li>
-                        </ul>
+                <div class="fase-card reveal">
+                    <div class="fase-header">
+                        <span class="fase-tag">Años 4-5</span>
+                        <h3>Fase de Consolidación</h3>
+                        <span class="fase-inversion">$1,200,000</span>
+                    </div>
+                    <ul class="fase-list">
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Múltiples plantas de producción
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Líneas de productos secundarios
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Exportación regional (Caribe)
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            I+D para nuevos productos
+                        </li>
+                        <li>
+                            <span class="fase-bullet"></span>
+                            Franquicia del modelo
+                        </li>
+                    </ul>
+                    <div class="fase-meta">
+                        <span>Producción mensual</span>
+                        <strong>2,000+ toneladas</strong>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Final: Conclusión -->
-    <section class="conclusion" id="conclusion">
+    <!-- Sección: Clientes Objetivo -->
+    <section class="clientes" id="clientes">
         <div class="section-container">
-            <div class="conclusion-content reveal">
-                <div class="conclusion-icon">🌿</div>
-                <h2>Un Futuro Sostenible para Cabrera</h2>
-                <p>Un proyecto sostenible que une el cuidado ambiental, la agricultura local y el desarrollo económico de nuestra comunidad.</p>
-                
-                <div class="pillars">
-                    <div class="pillar">
-                        <span class="pillar-icon">🌍</span>
-                        <span>Cuidado Ambiental</span>
-                    </div>
-                    <div class="pillar">
-                        <span class="pillar-icon">🌾</span>
-                        <span>Agricultura Local</span>
-                    </div>
-                    <div class="pillar">
-                        <span class="pillar-icon">📈</span>
-                        <span>Desarrollo Económico</span>
+            <div class="section-header reveal">
+                <span class="section-tag">Mercado Objetivo</span>
+                <h2 class="section-title">Clientes y Segmentos</h2>
+                <p class="section-subtitle">Sectores con demanda comprobada para nuestros productos</p>
+            </div>
+
+            <div class="clientes-grid">
+                <div class="cliente-card reveal">
+                    <div class="cliente-icon">⛽</div>
+                    <h3>Sector Energético</h3>
+                    <p>Distribuidoras de combustible, plantas de generación eléctrica y empresas con flotas de transporte.</p>
+                    <div class="cliente-productos">
+                        <span>Bioetanol</span>
+                        <span>Biodiésel</span>
+                        <span>Biogás</span>
                     </div>
                 </div>
+
+                <div class="cliente-card reveal">
+                    <div class="cliente-icon">🌾</div>
+                    <h3>Sector Agrícola</h3>
+                    <p>Productores de coco, arroz, plátano, vegetales y frutas. Fincas grandes y medianas.</p>
+                    <div class="cliente-productos">
+                        <span>Compost</span>
+                        <span>Fertilizante líquido</span>
+                    </div>
+                </div>
+
+                <div class="cliente-card reveal">
+                    <div class="cliente-icon">🌳</div>
+                    <h3>Viveros y Jardinería</h3>
+                    <p>Viveros comerciales, empresas de paisajismo, campos de golf y proyectos de reforestación.</p>
+                    <div class="cliente-productos">
+                        <span>Compost premium</span>
+                        <span>Sustrato</span>
+                    </div>
+                </div>
+
+                <div class="cliente-card reveal">
+                    <div class="cliente-icon">🏨</div>
+                    <h3>Sector Turístico</h3>
+                    <p>Hoteles y resorts que requieren limpieza de playas y productos ecológicos para jardines.</p>
+                    <div class="cliente-productos">
+                        <span>Servicio de recolección</span>
+                        <span>Fertilizantes</span>
+                    </div>
+                </div>
+
+                <div class="cliente-card reveal">
+                    <div class="cliente-icon">🏛️</div>
+                    <h3>Gobiernos Municipales</h3>
+                    <p>Ayuntamientos con costas afectadas que requieren servicios de recolección y limpieza.</p>
+                    <div class="cliente-productos">
+                        <span>Contratos de servicio</span>
+                        <span>Compost</span>
+                    </div>
+                </div>
+
+                <div class="cliente-card reveal">
+                    <div class="cliente-icon">🏭</div>
+                    <h3>Industria Manufacturera</h3>
+                    <p>Empresas interesadas en materiales biodegradables y empaques ecológicos.</p>
+                    <div class="cliente-productos">
+                        <span>Bioplástico</span>
+                        <span>Fibras</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Ventajas Competitivas -->
+    <section class="ventajas">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Ventajas Competitivas</span>
+                <h2 class="section-title">¿Por Qué Invertir en SargaTech?</h2>
+                <p class="section-subtitle">Factores diferenciadores que garantizan el éxito del negocio</p>
+            </div>
+
+            <div class="ventajas-grid">
+                <div class="ventaja-item reveal">
+                    <span class="ventaja-number">01</span>
+                    <div class="ventaja-content">
+                        <h3>Materia Prima Gratuita e Ilimitada</h3>
+                        <p>El sargazo llega constantemente a las costas sin costo alguno. Suministro garantizado durante todo el año.</p>
+                    </div>
+                </div>
+
+                <div class="ventaja-item reveal">
+                    <span class="ventaja-number">02</span>
+                    <div class="ventaja-content">
+                        <h3>Primeros en el Mercado</h3>
+                        <p>No existe competencia directa en República Dominicana ni en el Caribe. Posición de liderazgo asegurada.</p>
+                    </div>
+                </div>
+
+                <div class="ventaja-item reveal">
+                    <span class="ventaja-number">03</span>
+                    <div class="ventaja-content">
+                        <h3>Múltiples Fuentes de Ingreso</h3>
+                        <p>Diversificación de productos reduce el riesgo. Biocombustibles, fertilizantes y productos secundarios.</p>
+                    </div>
+                </div>
+
+                <div class="ventaja-item reveal">
+                    <span class="ventaja-number">04</span>
+                    <div class="ventaja-content">
+                        <h3>Incentivos Gubernamentales</h3>
+                        <p>Proyectos de energía renovable y ambientales califican para exenciones fiscales y apoyo estatal.</p>
+                    </div>
+                </div>
+
+                <div class="ventaja-item reveal">
+                    <span class="ventaja-number">05</span>
+                    <div class="ventaja-content">
+                        <h3>Impacto Ambiental Positivo</h3>
+                        <p>Atractivo para inversores ESG y fondos de impacto. Valor agregado de marca sostenible.</p>
+                    </div>
+                </div>
+
+                <div class="ventaja-item reveal">
+                    <span class="ventaja-number">06</span>
+                    <div class="ventaja-content">
+                        <h3>Escalabilidad Regional</h3>
+                        <p>El modelo es replicable en cualquier costa del Caribe. Potencial de expansión internacional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <div class="cta-content reveal">
+            <div class="cta-icon">🚀</div>
+            <h2>Un Negocio Rentable con Propósito</h2>
+            <p>SargaTech RD representa una oportunidad única de inversión: alta rentabilidad, mercado sin competencia y contribución ambiental significativa.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Solicitar Información</a>
+                <a href="#" class="btn-secondary">Descargar Plan Completo</a>
             </div>
         </div>
     </section>
@@ -1627,15 +1890,33 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">
-                🌊 Sargazo Cabrera
+            <div class="footer-brand">
+                <h3>Sarga<span>Tech</span> RD</h3>
+                <p>Transformando el sargazo del Caribe en productos de alto valor. Biocombustibles, fertilizantes y materiales sostenibles.</p>
+                <p>📍 Cabrera, María Trinidad Sánchez, República Dominicana</p>
             </div>
-            <p>Transformando desafíos ambientales en oportunidades de desarrollo sostenible.</p>
-            <div class="footer-location">
-                📍 Cabrera, María Trinidad Sánchez, República Dominicana
+            <div class="footer-section">
+                <h4>Productos</h4>
+                <ul>
+                    <li><a href="#">Biocombustible</a></li>
+                    <li><a href="#">Fertilizante Orgánico</a></li>
+                    <li><a href="#">Bioplástico</a></li>
+                    <li><a href="#">Cosméticos</a></li>
+                </ul>
             </div>
-            <div class="footer-divider"></div>
-            <p class="copyright">© 2024 Proyecto Sargazo Cabrera. Todos los derechos reservados.</p>
+            <div class="footer-section">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Plan de Negocios</a></li>
+                    <li><a href="#">Inversores</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 SargaTech RD. Todos los derechos reservados.</p>
+            <p>Plan de Negocios - Versión 1.0</p>
         </div>
     </footer>
 
@@ -1656,14 +1937,11 @@
         // ========== MENÚ MÓVIL ==========
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
         });
 
-        // Cerrar menú al hacer clic en un enlace
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
             });
         });
 
@@ -1686,7 +1964,7 @@
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
 
-        // ========== SMOOTH SCROLL PARA ENLACES ==========
+        // ========== SMOOTH SCROLL ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1704,84 +1982,30 @@
             });
         });
 
-        // ========== EFECTO PARALLAX SUAVE EN HERO ==========
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            const hero = document.querySelector('.hero');
-            const heroContent = document.querySelector('.hero-content');
+        // ========== CONTADOR ANIMADO ==========
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('.stat-number, .highlight-number');
             
-            if (scrolled < window.innerHeight) {
-                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-                heroContent.style.opacity = 1 - (scrolled / 700);
-            }
-        });
-
-        // ========== INDICADOR DE SECCIÓN ACTIVA ==========
-        const sections = document.querySelectorAll('section[id]');
-
-        const highlightNav = () => {
-            const scrollY = window.scrollY;
-
-            sections.forEach(section => {
-                const sectionHeight = section.offsetHeight;
-                const sectionTop = section.offsetTop - 150;
-                const sectionId = section.getAttribute('id');
-                const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
-
-                if (navLink) {
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                        navLink.style.color = '#e8b84a';
-                    } else {
-                        navLink.style.color = '';
-                    }
+            counters.forEach(counter => {
+                const target = counter.innerText;
+                if (counter.dataset.animated) return;
+                
+                const rect = counter.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    counter.dataset.animated = true;
                 }
             });
         };
 
-        window.addEventListener('scroll', highlightNav);
+        window.addEventListener('scroll', animateCounters);
 
-        // ========== ANIMACIÓN DE NÚMEROS EN TIMELINE ==========
-        const faseNumbers = document.querySelectorAll('.fase-number');
-        
-        const animateFases = () => {
-            faseNumbers.forEach((num, index) => {
-                const rect = num.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    setTimeout(() => {
-                        num.style.transform = 'translateX(-50%) scale(1.1)';
-                        setTimeout(() => {
-                            num.style.transform = 'translateX(-50%) scale(1)';
-                        }, 200);
-                    }, index * 200);
-                }
-            });
-        };
-
-        window.addEventListener('scroll', animateFases);
-
-        // ========== INTERACTIVIDAD EN CARDS ==========
-        const cards = document.querySelectorAll('.problema-card, .producto-item, .pillar');
-        
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-            });
-        });
-
-        // ========== LOADING ANIMATION ==========
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
-            
-            // Animar elementos del hero secuencialmente
-            const heroElements = document.querySelectorAll('.hero-badge, .hero h1, .hero-subtitle, .hero-cta');
-            heroElements.forEach((el, index) => {
-                el.style.animationDelay = `${index * 0.2}s`;
-            });
-        });
-
-        // Inicializar opacidad del body
+        // ========== LOADING ==========
         document.body.style.opacity = '0';
         document.body.style.transition = 'opacity 0.5s ease';
+        
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
     </script>
 </body>
 </html>
