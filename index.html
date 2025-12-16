@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sargazo Cabrera - Plan de Negocios Ambiental</title>
+    <style>
+        /* ========== RESET Y BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0d7377;
+            --primary-dark: #065a5c;
+            --secondary: #14a085;
+            --accent: #e8b84a;
+            --sand: #f5e6c8;
+            --sand-light: #faf6ed;
+            --ocean-dark: #0a4f5c;
+            --ocean: #127681;
+            --text-dark: #1a1a2e;
+            --text-light: #ffffff;
+            --gradient-ocean: linear-gradient(135deg, #0d7377 0%, #14a085 50%, #0a4f5c 100%);
+            --gradient-sand: linear-gradient(180deg, #f5e6c8 0%, #e8dcc4 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* ========== NAVEGACIÓN ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 115, 119, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.7rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-ocean);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(20, 160, 133, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(13, 115, 119, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(139, 119, 42, 0.3) 0%, transparent 40%);
+        }
+
+        /* Ondas animadas */
+        .waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C57.1,118.92,156.63,69.08,321.39,56.44Z' fill='%23f5e6c8'/%3E%3C/svg%3E");
+            background-size: 50% 100%;
+            animation: wave 10s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            bottom: 10px;
+            opacity: 0.5;
+            animation: wave 7s linear reverse infinite;
+        }
+
+        .wave:nth-child(3) {
+            bottom: 20px;
+            opacity: 0.3;
+            animation: wave 12s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Partículas de sargazo */
+        .seaweed-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 20px;
+            height: 8px;
+            background: linear-gradient(90deg, #5a7c3e, #8fa86b);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 45%; top: 35%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 65%; top: 70%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 85%; top: 25%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 15%; top: 80%; animation-delay: 1.5s; }
+        .particle:nth-child(7) { left: 75%; top: 45%; animation-delay: 2.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--text-light);
+            z-index: 10;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            box-shadow: 0 4px 15px rgba(232, 184, 74, 0.4);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(232, 184, 74, 0.5);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator .mouse {
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            padding-top: 10px;
+        }
+
+        .scroll-indicator .wheel {
+            width: 4px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 2px;
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        @keyframes scroll {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(15px); opacity: 0; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== SECCIONES GENERALES ========== */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ========== SECCIÓN 1: EL PROBLEMA ========== */
+        .problema {
+            background: var(--sand-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problema::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(180deg, var(--sand) 0%, transparent 100%);
+        }
+
+        .problema-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .problema-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problema-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-ocean);
+        }
+
+        .problema-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .problema-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        /* Iconos CSS */
+        .icon-environment::before {
+            content: '';
+            width: 30px;
+            height: 30px;
+            border: 3px solid white;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .icon-environment::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 20px;
+            background: white;
+            clip-path: polygon(50% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+        }
+
+        .icon-tourism::before {
+            content: '';
+            width: 25px;
+            height: 25px;
+            border: 3px solid white;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .icon-tourism::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .icon-government::before {
+            content: '';
+            width: 30px;
+            height: 20px;
+            background: white;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        }
+
+        .icon-government::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 5px;
+            background: white;
+            bottom: 15px;
+            border-radius: 2px;
+        }
+
+        .problema-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .problema-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .quote-box {
+            background: var(--gradient-ocean);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+        }
+
+        .quote-box::before,
+        .quote-box::after {
+            content: '"';
+            font-size: 5rem;
+            position: absolute;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .quote-box::before {
+            top: 10px;
+            left: 30px;
+        }
+
+        .quote-box::after {
+            bottom: -20px;
+            right: 30px;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Imagen ilustrativa sargazo */
+        .beach-illustration {
+            margin-top: 3rem;
+            background: linear-gradient(180deg, #87CEEB 0%, #87CEEB 40%, #f5e6c8 40%, #f5e6c8 60%, #5a7c3e 60%, #8fa86b 100%);
+            height: 200px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .beach-illustration::before {
+            content: '🏖️ Playa de Cabrera con acumulación de sargazo';
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* ========== SECCIÓN 2: LA OPORTUNIDAD ========== */
+        .oportunidad {
+            background: white;
+            position: relative;
+        }
+
+        .oportunidad-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .oportunidad-visual {
+            position: relative;
+        }
+
+        .map-container {
+            background: var(--sand);
+            border-radius: 30px;
+            padding: 2rem;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-shape {
+            width: 200px;
+            height: 280px;
+            background: var(--primary);
+            border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+            position: relative;
+            animation: morphShape 10s ease-in-out infinite;
+        }
+
+        @keyframes morphShape {
+            0%, 100% { border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%; }
+            50% { border-radius: 60% 40% 40% 60% / 40% 60% 40% 60%; }
+        }
+
+        .location-pin {
+            position: absolute;
+            top: 30%;
+            left: 55%;
+            width: 30px;
+            height: 40px;
+            animation: pinBounce 1s ease infinite;
+        }
+
+        .location-pin::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            box-shadow: 0 5px 15px rgba(232, 184, 74, 0.5);
+        }
+
+        .location-pin::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            top: 8px;
+            left: 10px;
+        }
+
+        @keyframes pinBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .location-label {
+            position: absolute;
+            top: 25%;
+            left: 70%;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            font-weight: 600;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .producto-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .producto-item:hover {
+            transform: scale(1.05);
+        }
+
+        .producto-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .producto-item span {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .oportunidad-text h3 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .oportunidad-text p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .connection-box {
+            background: linear-gradient(135deg, var(--sand) 0%, #e8dcc4 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .connection-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .connection-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .check-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .check-icon::before {
+            content: '';
+            width: 12px;
+            height: 6px;
+            border: 2px solid white;
+            border-top: none;
+            border-right: none;
+            transform: rotate(-45deg);
+            margin-bottom: 3px;
+        }
+
+        .quote-highlight {
+            background: var(--accent);
+            color: var(--text-dark);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(232, 184, 74, 0.3);
+        }
+
+        /* ========== SECCIÓN 3: LA SOLUCIÓN ========== */
+        .solucion {
+            background: var(--gradient-ocean);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solucion .section-tag {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .solucion .section-title {
+            color: var(--text-light);
+        }
+
+        .solucion .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .proceso-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .proceso-step {
+            text-align: center;
+            max-width: 180px;
+        }
+
+        .proceso-circle {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .proceso-step:hover .proceso-circle {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.1);
+        }
+
+        .proceso-arrow {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .proceso-step h4 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .clientes-impacto {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .clientes-box, .impacto-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .clientes-box h3, .impacto-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .clientes-list, .impacto-list {
+            list-style: none;
+        }
+
+        .clientes-list li, .impacto-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .clientes-list li:last-child, .impacto-list li:last-child {
+            border-bottom: none;
+        }
+
+        .list-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .solucion-quote {
+            background: var(--accent);
+            color: var(--text-dark);
+            padding: 2rem 3rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ========== SECCIÓN 4: PLAN DE NEGOCIO ========== */
+        .plan {
+            background: var(--sand-light);
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            border-radius: 2px;
+        }
+
+        .fase {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .fase:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .fase-content {
+            width: 45%;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .fase-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .fase-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 5px 20px rgba(13, 115, 119, 0.4);
+            z-index: 10;
+        }
+
+        .fase:nth-child(2) .fase-number {
+            background: var(--secondary);
+        }
+
+        .fase:nth-child(3) .fase-number {
+            background: var(--accent);
+            color: var(--text-dark);
+        }
+
+        .fase-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .fase-tag {
+            display: inline-block;
+            background: var(--sand);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .fase-header h3 {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+
+        .fase-list {
+            list-style: none;
+        }
+
+        .fase-list li {
+            padding: 0.6rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            color: #555;
+        }
+
+        .fase-bullet {
+            width: 8px;
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        /* ========== SECCIÓN FINAL: CONCLUSIÓN ========== */
+        .conclusion {
+            background: var(--gradient-ocean);
+            color: var(--text-light);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35C57.1,53.22,156.63,67.72,321.39,56.44Z' fill='%23faf6ed'/%3E%3C/svg%3E");
+            background-size: cover;
+            transform: rotate(180deg);
+        }
+
+        .conclusion-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 4rem;
+        }
+
+        .conclusion-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+            box-shadow: 0 10px 40px rgba(232, 184, 74, 0.4);
+        }
+
+        .conclusion h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .conclusion p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .pillars {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .pillar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .pillar:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .pillar-icon {
+            font-size: 2rem;
+        }
+
+        .pillar span {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--ocean-dark);
+            color: var(--text-light);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-divider {
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* ========== ANIMACIONES DE SCROLL ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 992px) {
+            .oportunidad-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .oportunidad-visual {
+                order: -1;
+            }
+
+            .clientes-impacto {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .fase {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 80px;
+            }
+
+            .fase-content {
+                width: 100%;
+            }
+
+            .fase-number {
+                left: 30px;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .proceso-flow {
+                flex-direction: column;
+            }
+
+            .proceso-arrow {
+                transform: rotate(90deg);
+            }
+
+            .productos-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .quote-text {
+                font-size: 1.2rem;
+            }
+
+            .pillars {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pillar {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 4rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .problema-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .productos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .conclusion h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🌊</div>
+                Sargazo Cabrera
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#problema">El Problema</a></li>
+                <li><a href="#oportunidad">Oportunidad</a></li>
+                <li><a href="#solucion">Solución</a></li>
+                <li><a href="#plan">Plan</a></li>
+                <li><a href="#conclusion">Conclusión</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="seaweed-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">🌱 Plan de Negocios Ambiental</div>
+            <h1>Transformando el <span>Sargazo</span> en Oportunidad</h1>
+            <p class="hero-subtitle">Un proyecto sostenible para las playas de Cabrera, María Trinidad Sánchez, República Dominicana</p>
+            <a href="#problema" class="hero-cta">
+                Descubre el Proyecto
+                <span>↓</span>
+            </a>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+
+        <div class="waves">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+    </section>
+
+    <!-- Sección 1: El Problema -->
+    <section class="problema" id="problema">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Sección 1</span>
+                <h2 class="section-title">El sargazo: un problema ambiental y económico en Cabrera</h2>
+                <p class="section-subtitle">Las playas de nuestra región enfrentan un desafío que afecta tanto al ecosistema como a nuestra economía local</p>
+            </div>
+
+            <div class="problema-grid">
+                <div class="problema-card reveal">
+                    <div class="problema-icon icon-environment"></div>
+                    <h3>Impacto Ambiental</h3>
+                    <p>La gran cantidad de sargazo acumulado ha afectado significativamente el medioambiente costero, alterando el ecosistema marino y la calidad de nuestras playas.</p>
+                </div>
+
+                <div class="problema-card reveal">
+                    <div class="problema-icon icon-tourism"></div>
+                    <h3>Impacto en el Turismo</h3>
+                    <p>El turismo, una fuente clave de ingresos para nuestra comunidad, se ha visto negativamente afectado por la presencia masiva de sargazo en las costas.</p>
+                </div>
+
+                <div class="problema-card reveal">
+                    <div class="problema-icon icon-government"></div>
+                    <h3>Falta de Soluciones Efectivas</h3>
+                    <p>El sector público no ha logrado implementar una solución efectiva y eficiente para recolectar y procesar el sargazo de manera sostenible.</p>
+                </div>
+            </div>
+
+            <div class="quote-box reveal">
+                <p class="quote-text">El sargazo se acumula en nuestras playas mientras la comunidad espera una solución.</p>
+            </div>
+
+            <div class="beach-illustration reveal"></div>
+        </div>
+    </section>
+
+    <!-- Sección 2: La Oportunidad -->
+    <section class="oportunidad" id="oportunidad">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Sección 2</span>
+                <h2 class="section-title">Cabrera: una oportunidad para transformar el problema</h2>
+                <p class="section-subtitle">Nuestra comunidad tiene todo lo necesario para convertir un desafío en una solución innovadora</p>
+            </div>
+
+            <div class="oportunidad-content">
+                <div class="oportunidad-visual reveal">
+                    <div class="map-container">
+                        <div class="map-shape">
+                            <div class="location-pin"></div>
+                        </div>
+                        <div class="location-label">📍 Cabrera, RD</div>
+                    </div>
+                    <div class="productos-grid">
+                        <div class="producto-item">
+                            <div class="producto-emoji">🥥</div>
+                            <span>Coco</span>
+                        </div>
+                        <div class="producto-item">
+                            <div class="producto-emoji">🌾</div>
+                            <span>Arroz</span>
+                        </div>
+                        <div class="producto-item">
+                            <div class="producto-emoji">🍌</div>
+                            <span>Plátano</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="oportunidad-text reveal">
+                    <h3>Contexto Local</h3>
+                    <p>Cabrera cuenta con una economía agrícola activa, donde familias trabajan la tierra en huertos y pequeños conucos, produciendo cultivos esenciales para la región.</p>
+                    
+                    <div class="connection-box">
+                        <div class="connection-item">
+                            <div class="check-icon"></div>
+                            <span>El sargazo abunda en la costa</span>
+                        </div>
+                        <div class="connection-item">
+                            <div class="check-icon"></div>
+                            <span>Los agricultores necesitan mejorar la fertilidad del suelo</span>
+                        </div>
+                        <div class="connection-item">
+                            <div class="check-icon"></div>
+                            <span>Existe una necesidad de reducir costos en insumos agrícolas</span>
+                        </div>
+                    </div>
+
+                    <p>Existe una conexión directa entre el problema costero y la necesidad agrícola de nuestra comunidad.</p>
+
+                    <div class="quote-highlight">
+                        "Lo que sobra en la playa hace falta en el campo."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 3: La Solución -->
+    <section class="solucion" id="solucion">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Sección 3</span>
+                <h2 class="section-title">De la playa al campo: compost con sargazo</h2>
+                <p class="section-subtitle">Un proceso innovador que transforma el problema en una solución sostenible</p>
+            </div>
+
+            <div class="proceso-flow reveal">
+                <div class="proceso-step">
+                    <div class="proceso-circle">🌊</div>
+                    <h4>Recolección comunitaria</h4>
+                </div>
+                <span class="proceso-arrow">→</span>
+                <div class="proceso-step">
+                    <div class="proceso-circle">💧</div>
+                    <h4>Lavado y tratamiento</h4>
+                </div>
+                <span class="proceso-arrow">→</span>
+                <div class="proceso-step">
+                    <div class="proceso-circle">♻️</div>
+                    <h4>Compostaje</h4>
+                </div>
+                <span class="proceso-arrow">→</span>
+                <div class="proceso-step">
+                    <div class="proceso-circle">🌱</div>
+                    <h4>Abono orgánico</h4>
+                </div>
+            </div>
+
+            <div class="clientes-impacto">
+                <div class="clientes-box reveal">
+                    <h3>👥 Nuestros Clientes</h3>
+                    <ul class="clientes-list">
+                        <li>
+                            <span class="list-icon">🥥</span>
+                            Productores de coco, arroz y plátano
+                        </li>
+                        <li>
+                            <span class="list-icon">🏡</span>
+                            Personas con huertos familiares
+                        </li>
+                        <li>
+                            <span class="list-icon">🌳</span>
+                            Viveros y proyectos de reforestación
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="impacto-box reveal">
+                    <h3>✨ Impacto Esperado</h3>
+                    <ul class="impacto-list">
+                        <li>
+                            <span class="list-icon">🏖️</span>
+                            Playas más limpias
+                        </li>
+                        <li>
+                            <span class="list-icon">🌾</span>
+                            Suelos más fértiles
+                        </li>
+                        <li>
+                            <span class="list-icon">🚫</span>
+                            Menos uso de fertilizantes químicos
+                        </li>
+                        <li>
+                            <span class="list-icon">💼</span>
+                            Generación de empleos locales
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="solucion-quote reveal">
+                "Cabrera puede convertir un problema ambiental en una solución agrícola local."
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 4: Plan de Negocio -->
+    <section class="plan" id="plan">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Sección 4</span>
+                <h2 class="section-title">Plan de Negocio por Fases</h2>
+                <p class="section-subtitle">Un camino estructurado hacia el crecimiento sostenible</p>
+            </div>
+
+            <div class="timeline">
+                <div class="fase reveal">
+                    <div class="fase-number">1</div>
+                    <div class="fase-content">
+                        <div class="fase-header">
+                            <span class="fase-tag">Corto plazo</span>
+                            <h3>Fase de Inicio</h3>
+                        </div>
+                        <ul class="fase-list">
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Recolección manual del sargazo
+                            </li>
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Trabajo comunitario colaborativo
+                            </li>
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Producción pequeña de compost
+                            </li>
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Venta local directa
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="fase reveal">
+                    <div class="fase-number">2</div>
+                    <div class="fase-content">
+                        <div class="fase-header">
+                            <span class="fase-tag">Mediano plazo</span>
+                            <h3>Fase de Crecimiento</h3>
+                        </div>
+                        <ul class="fase-list">
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Mejora del proceso de compostaje
+                            </li>
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Alianzas estratégicas con agricultores
+                            </li>
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Creación de marca local del producto
+                            </li>
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Diseño de empaques simples
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="fase reveal">
+                    <div class="fase-number">3</div>
+                    <div class="fase-content">
+                        <div class="fase-header">
+                            <span class="fase-tag">Largo plazo</span>
+                            <h3>Fase Avanzada</h3>
+                        </div>
+                        <ul class="fase-list">
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Producción a mayor escala
+                            </li>
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Distribución regional expandida
+                            </li>
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Certificación orgánica oficial
+                            </li>
+                            <li>
+                                <span class="fase-bullet"></span>
+                                Venta a proyectos agrícolas y ambientales
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Final: Conclusión -->
+    <section class="conclusion" id="conclusion">
+        <div class="section-container">
+            <div class="conclusion-content reveal">
+                <div class="conclusion-icon">🌿</div>
+                <h2>Un Futuro Sostenible para Cabrera</h2>
+                <p>Un proyecto sostenible que une el cuidado ambiental, la agricultura local y el desarrollo económico de nuestra comunidad.</p>
+                
+                <div class="pillars">
+                    <div class="pillar">
+                        <span class="pillar-icon">🌍</span>
+                        <span>Cuidado Ambiental</span>
+                    </div>
+                    <div class="pillar">
+                        <span class="pillar-icon">🌾</span>
+                        <span>Agricultura Local</span>
+                    </div>
+                    <div class="pillar">
+                        <span class="pillar-icon">📈</span>
+                        <span>Desarrollo Económico</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                🌊 Sargazo Cabrera
+            </div>
+            <p>Transformando desafíos ambientales en oportunidades de desarrollo sostenible.</p>
+            <div class="footer-location">
+                📍 Cabrera, María Trinidad Sánchez, República Dominicana
+            </div>
+            <div class="footer-divider"></div>
+            <p class="copyright">© 2024 Proyecto Sargazo Cabrera. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========== NAVEGACIÓN SCROLL ==========
+        const navbar = document.getElementById('navbar');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ========== MENÚ MÓVIL ==========
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // ========== ANIMACIONES DE SCROLL ==========
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // ========== SMOOTH SCROLL PARA ENLACES ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    const navHeight = navbar.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ========== EFECTO PARALLAX SUAVE EN HERO ==========
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const hero = document.querySelector('.hero');
+            const heroContent = document.querySelector('.hero-content');
+            
+            if (scrolled < window.innerHeight) {
+                heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+                heroContent.style.opacity = 1 - (scrolled / 700);
+            }
+        });
+
+        // ========== INDICADOR DE SECCIÓN ACTIVA ==========
+        const sections = document.querySelectorAll('section[id]');
+
+        const highlightNav = () => {
+            const scrollY = window.scrollY;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 150;
+                const sectionId = section.getAttribute('id');
+                const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+
+                if (navLink) {
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        navLink.style.color = '#e8b84a';
+                    } else {
+                        navLink.style.color = '';
+                    }
+                }
+            });
+        };
+
+        window.addEventListener('scroll', highlightNav);
+
+        // ========== ANIMACIÓN DE NÚMEROS EN TIMELINE ==========
+        const faseNumbers = document.querySelectorAll('.fase-number');
+        
+        const animateFases = () => {
+            faseNumbers.forEach((num, index) => {
+                const rect = num.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    setTimeout(() => {
+                        num.style.transform = 'translateX(-50%) scale(1.1)';
+                        setTimeout(() => {
+                            num.style.transform = 'translateX(-50%) scale(1)';
+                        }, 200);
+                    }, index * 200);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateFases);
+
+        // ========== INTERACTIVIDAD EN CARDS ==========
+        const cards = document.querySelectorAll('.problema-card, .producto-item, .pillar');
+        
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+        });
+
+        // ========== LOADING ANIMATION ==========
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+            
+            // Animar elementos del hero secuencialmente
+            const heroElements = document.querySelectorAll('.hero-badge, .hero h1, .hero-subtitle, .hero-cta');
+            heroElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+
+        // Inicializar opacidad del body
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease';
+    </script>
+</body>
+</html>
